@@ -1,0 +1,9 @@
+*.csv
+*.gz
+*.cloupe
+*.tar
+*.h5
+*.bam
+*.bai
+datasets/10XGenomics/Targeted_SC3v3_Human_Glioblastoma_Neuroscience_web_summary.html
+datasets/.DS_Store

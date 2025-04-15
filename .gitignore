@@ -7,3 +7,10 @@
 *.bai
 datasets/10XGenomics/Targeted_SC3v3_Human_Glioblastoma_Neuroscience_web_summary.html
 datasets/.DS_Store
+*.npz
+*.loom
+*.mtx
+*.tsv
+datasets/10XGenomics/.DS_Store
+datasets/10XGenomics/filtered_feature_bc_matrix/.DS_Store
+/.ipynb_checkpoints

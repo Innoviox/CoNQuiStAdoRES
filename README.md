@@ -13,7 +13,7 @@ F. Alexander Wolf, Philipp Angerer, Fabian J. Theis
 
 # Ideas
 
-## Compression Filter
+## Consecutive
 
 - indices: bit array of all the non-zero indices
   - int size: # nonzero
@@ -29,7 +29,7 @@ F. Alexander Wolf, Philipp Angerer, Fabian J. Theis
   - tail[1]: max nvz tail count (usually very small)
 - total bits
   - B(X): number of bits in X
-  - N: number of nonzero values
+  - N: number of values (counting zeros)
   - O: number of ones
   - K: size of body
   - T: size of tail
@@ -37,3 +37,7 @@ F. Alexander Wolf, Philipp Angerer, Fabian J. Theis
   - S: max nzv tail count
   - C: constant extra space (array markers, etc)
   - $$N * B(N) + K * B(O) + T * (B(M) + B(S)) + C$$
+- need to write R, body, T1, T2
+- first two words:
+  - len(R), size(R), array, len(body), ...
+

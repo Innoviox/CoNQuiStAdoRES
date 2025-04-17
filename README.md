@@ -41,3 +41,9 @@ F. Alexander Wolf, Philipp Angerer, Fabian J. Theis
 - first two words:
   - len(R), size(R), array, len(body), ...
 
+## Other ideas for cons
+
+- don't need first 100 elements of body
+- can store T1 as a differential
+- cluster normal cells
+- 

@@ -14,3 +14,7 @@ datasets/.DS_Store
 datasets/10XGenomics/.DS_Store
 datasets/10XGenomics/filtered_feature_bc_matrix/.DS_Store
 /.ipynb_checkpoints
+*.conq
+*.zip
+*.zip
+10x.conq.zip

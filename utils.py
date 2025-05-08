@@ -17,6 +17,8 @@ def get_leiden(adata):
     adata.X.sum(axis = 1)
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
+    sc.pp.highly_variable_genes(adata, n_top_genes = 2000)
+    adata = adata[:, adata.var.highly_variable]
     sc.pp.regress_out(adata, ['total_counts'])
     sc.pp.scale(adata, max_value=10)
     sc.tl.pca(adata, svd_solver='arpack')
@@ -53,8 +55,9 @@ def reclassify(X, N):
             continue
 
         l, r = chunk_boundaries[0], chunk_boundaries[-1]
+        v = 1 if val == 0 else (l + r) // 2
         # print("chunking", l, r, val + 1)
-        X = np.where((l <= X) & (X <= r), val + 1, X)
+        X = np.where((l <= X) & (X <= r), v, X)
     return X
 
 def compare_leidens(l1, l2):

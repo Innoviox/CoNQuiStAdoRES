@@ -17,7 +17,7 @@ def get_leiden(adata):
     adata.X.sum(axis = 1)
     sc.pp.normalize_total(adata, target_sum=1e4)
     sc.pp.log1p(adata)
-    sc.pp.highly_variable_genes(adata, n_top_genes = 2000)
+    sc.pp.highly_variable_genes(adata, n_top_genes = 500)
     adata = adata[:, adata.var.highly_variable]
     sc.pp.regress_out(adata, ['total_counts'])
     sc.pp.scale(adata, max_value=10)
@@ -42,14 +42,20 @@ def reclassify(X, N):
     # #     if curr >= chunk:
     # #         i += 1
     # #         curr = 0
-    chunk = len(c) // N + 1
+    body = 1
+    while body in c:
+        body += 1
+    
+    chunk = (body + 1) // N + 1
     vals = [[] for _ in range(N)]
     i = 0
     curr = 0
-    for k in sorted(c):
+    for k in range(1, body + 1):
         vals[i].append(k)
         if len(vals[i]) >= chunk:
             i += 1
+    vals.append([body + 1, max(c) + 1])
+    print(vals)
     for val, chunk_boundaries in enumerate(vals): # tqdm.tqdm(enumerate(vals)):
         if len(chunk_boundaries) == 0:
             continue

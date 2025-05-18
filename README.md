@@ -1,9 +1,13 @@
-# CoNQuiStAdoR
-Cell of Nucleic seQuencing uh it's Single to Acid do of Ribo
+# CoNQuiStADoR
+Cell Nucleic seQuencing Single Acid Ribo
 
 
 
-remember to cite scanpy https://github.com/scverse/scanpy 
+The full pipeline lives in `consecutivizer.ipynb`. 
+
+
+
+Libraries used - 
 
 **SCANPY: large-scale single-cell gene expression data analysis**
 
@@ -11,39 +15,18 @@ F. Alexander Wolf, Philipp Angerer, Fabian J. Theis
 
 *Genome Biology* 2018 Feb 06. doi: [10.1186/s13059-017-1382-0](https://doi.org/10.1186/s13059-017-1382-0).
 
-# Ideas
+Pauli Virtanen, Ralf Gommers, Travis E. Oliphant, Matt Haberland, Tyler Reddy, David Cournapeau, Evgeni Burovski, Pearu Peterson, Warren Weckesser, Jonathan Bright, Stéfan J. van der Walt, Matthew Brett, Joshua Wilson, K. Jarrod Millman, Nikolay Mayorov, Andrew R. J. Nelson, Eric Jones, Robert Kern, Eric Larson, CJ Carey, İlhan Polat, Yu Feng, Eric W. Moore, Jake VanderPlas, Denis Laxalde, Josef Perktold, Robert Cimrman, Ian Henriksen, E.A. Quintero, Charles R Harris, Anne M. Archibald, Antônio H. Ribeiro, Fabian Pedregosa, Paul van Mulbregt, and SciPy 1.0 Contributors. (2020) **SciPy 1.0: Fundamental Algorithms for Scientific Computing in Python**. *Nature Methods*, 17(3), 261-272. DOI: [10.1038/s41592-019-0686-2](https://doi.org/10.1038/s41592-019-0686-2).
 
-## Consecutive
+[J. D. Hunter, "Matplotlib: A 2D Graphics Environment", Computing in Science & Engineering, vol. 9, no. 3, pp. 90-95, 2007](https://doi.org/10.1109/MCSE.2007.55).
 
-- indices: bit array of all the non-zero indices
-  - int size: # nonzero
-- body: bit array of nvz's until there's a gap
-  - e.g. body[0] = # of 1s, body[1] = # of 2s, etc
-  - int size: # of 1s (a bit wasteful)
-- tail: 2 bit arrays, one is nvzs, one is counts
-  - e.g. `tail[0]` = [484, 2]
-  - tail[1] = [486, 3]
-  - etc
-  - usually small
-  - tail[0]: max nvz
-  - tail[1]: max nvz tail count (usually very small)
-- total bits
-  - B(X): number of bits in X
-  - N: number of values (counting zeros)
-  - O: number of ones
-  - K: size of body
-  - T: size of tail
-  - M = Max(Nz): maximum nonzero value
-  - S: max nzv tail count
-  - C: constant extra space (array markers, etc)
-  - $$N * B(N) + K * B(O) + T * (B(M) + B(S)) + C$$
-- need to write R, body, T1, T2
-- first two words:
-  - len(R), size(R), array, len(body), ...
+Harris, C.R., Millman, K.J., van der Walt, S.J. et al. *Array programming with NumPy*. Nature 585, 357–362 (2020). DOI: [10.1038/s41586-020-2649-2](https://doi.org/10.1038/s41586-020-2649-2). ([Publisher link](https://www.nature.com/articles/s41586-020-2649-2)).
 
-## Other ideas for cons
+**anndata: Annotated data**
 
-- don't need first 100 elements of body
-- can store T1 as a differential
-- cluster normal cells
-- 
+Isaac Virshup, Sergei Rybakov, Fabian J. Theis, Philipp Angerer, F. Alexander Wolf
+
+*JOSS* 2024 Sep 16. doi: [10.21105/joss.04371](https://doi.org/10.21105/joss.04371).
+
+```
+Siu Kwan Lam, Antoine Pitrou, and Stanley Seibert. 2015. Numba: a LLVM-based Python JIT compiler. In Proceedings of the Second Workshop on the LLVM Compiler Infrastructure in HPC (LLVM '15). Association for Computing Machinery, New York, NY, USA, Article 7, 1–6. https://doi.org/10.1145/2833157.2833162
+```
